@@ -28,6 +28,8 @@ return new class extends Migration
             $table->timestamp("expires_at")->nullable();
             $table->string("status"); // Remplacé de enum
             $table->integer("views_count")->default(0);
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
