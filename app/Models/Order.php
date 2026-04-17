@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\enum\order\OrderEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,6 +20,10 @@ class Order extends Model
         'notes'
     ];
 
+    protected $casts = [
+        'status' => OrderEnum::class,
+    ];
+
     public function farmer(): BelongsTo
     {
         return $this->belongsTo(User::class, 'farmer_id');
@@ -34,7 +39,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function orderStatusLogs() :HasMany
+    public function orderStatusLogs(): HasMany
     {
         return $this->hasMany(OrderStatusLogs::class);
     }

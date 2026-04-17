@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\enum\report\ReportEnum;
 use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
@@ -12,5 +13,9 @@ class Report extends Model
         'reportable_id',
         'reason',
         'status'
+    ];
+
+    protected $casts = [
+        'status' => ReportEnum::class
     ];
 }
