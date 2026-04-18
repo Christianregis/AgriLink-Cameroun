@@ -11,7 +11,7 @@ export namespace App {
         /**
          * @see [\App\Models\User](\C:\xampp\htdocs\agrilink_cmr\app\Models\User.php)
          */
-        export type User = { id: number, name: string, email: string, role: App.enum.UserRole, region_id: string | null, bio: string | null, profile_photo: string | null, email_verified_at: string | null, is_active: boolean, password: string, remember_token: string | null, deleted_at: string | null, created_at: string | null, updated_at: string | null, farmer_profile?: App.Models.FarmerProfile | null, buyer_profile?: App.Models.BuyerProfile | null, buyer_orders?: App.Models.Order[], farmer_orders?: App.Models.Order[], notifications?: Illuminate.Notifications.DatabaseNotification[] }
+        export type User = { id: number, name: string, email: string, role: App.enum.UserRole, region_id: string | null, bio: string | null, profile_photo: string | null, email_verified_at: string | null, is_active: boolean, password: string, remember_token: string | null, deleted_at: string | null, created_at: string | null, updated_at: string | null, farmer_profile?: App.Models.FarmerProfile | null, buyer_profile?: App.Models.BuyerProfile | null, buyer_orders?: App.Models.Order[], farmer_orders?: App.Models.Order[], notifications?: Illuminate.Notifications.DatabaseNotification[], roles?: Spatie.Permission.Models.Role[], permissions?: Spatie.Permission.Models.Permission[] }
 
         /**
          * @see [\App\Models\FarmerProfile](\C:\xampp\htdocs\agrilink_cmr\app\Models\FarmerProfile.php)
@@ -126,6 +126,22 @@ export namespace Illuminate {
          * @see [\Illuminate\Notifications\DatabaseNotification](\C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Notifications\DatabaseNotification.php)
          */
         export type DatabaseNotification = { incrementing: boolean, id: string, type: string, notifiable_type: string, notifiable_id: string, data: Record<string, unknown>, read_at: string | null, created_at: string | null, updated_at: string | null, notifiable?: Illuminate.Notifications.DatabaseNotification | null }
+    }
+}
+
+export namespace Spatie {
+    export namespace Permission {
+        export namespace Models {
+            /**
+             * @see [\Spatie\Permission\Models\Role](\C:\xampp\htdocs\agrilink_cmr\vendor\spatie\laravel-permission\src\Models\Role.php)
+             */
+            export type Role = { id: number, name: string, guard_name: string, created_at: string | null, updated_at: string | null, permissions?: Spatie.Permission.Models.Permission[] }
+
+            /**
+             * @see [\Spatie\Permission\Models\Permission](\C:\xampp\htdocs\agrilink_cmr\vendor\spatie\laravel-permission\src\Models\Permission.php)
+             */
+            export type Permission = { id: number, name: string, guard_name: string, created_at: string | null, updated_at: string | null, roles?: Spatie.Permission.Models.Role[], permissions?: Spatie.Permission.Models.Permission[] }
+        }
     }
 }
 
