@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'name' => ['required', "string", "max:255", 'required'],
             'email' => ['email', 'string', 'max:255', 'required', 'unique:users,email'],
             'password' => ['string', 'min:8', 'required'],
-            'region_id' => ['exists:region,id', 'nullable'],
+            'region_id' => ['exists:regions,id', 'nullable'],
             'village' => ['string', 'max:255', 'nullable'],
             'cultures' => ['string', 'nullable'],
             'profile_photo' => ['image', 'mimes:png,jpg,jpeg', 'max:2048', 'nullable'],

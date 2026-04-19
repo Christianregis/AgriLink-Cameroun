@@ -171,7 +171,7 @@
                   >Région d'exploitation</label
                 >
                 <select
-                  v-model="form.region"
+                  v-model="form.region_id"
                   class="w-full px-4 py-3 transition-all border bg-neutral-bg border-neutral-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary"
                 >
                   <option value="">--Selectionnez une region--</option>
@@ -188,7 +188,7 @@
                   >Village / Localité</label
                 >
                 <input
-                  v-model="form.location"
+                  v-model="form.village"
                   type="text"
                   placeholder="ex: Penja"
                   class="w-full px-4 py-3 transition-all border bg-neutral-bg border-neutral-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary"
@@ -254,18 +254,22 @@
 
           <div class="flex items-start">
             <input
+              required
               v-model="form.terms"
               type="checkbox"
               id="terms"
               class="w-5 h-5 mt-1 border-gray-300 rounded text-brand-primary focus:ring-brand-primary"
             />
-            <label for="terms" class="ml-3 text-sm text-neutral-muted">
+            <label for="terms" class="ml-3 text-sm text-neutral-muted" aria-required>
               J'accepte les
               <a href="#" class="font-bold text-brand-primary hover:underline"
                 >conditions d'utilisation</a
               >
               et la politique de confidentialité.
             </label>
+            <p v-if="!errorTermsNotConfirmed" class="mt-1 text-sm text-red-500">
+              {{ errorTermsNotConfirmed }}
+            </p>
           </div>
 
           <button
@@ -302,8 +306,8 @@ interface Form {
   password_confirmation: string;
   buyer_type: string;
   company_name: string;
-  region: string;
-  location: string;
+  region_id: string;
+  village: string;
   cultures: string;
   bio: string;
   terms: boolean;
@@ -321,8 +325,8 @@ const userType = ref<UserType>("buyer");
 //  Changement de type
 const changeType = (type: "buyer" | "farmer") => {
   userType.value = type;
+  form.account_type = type; // IMPORTANT
 };
-
 // Recuperation de la liste des regions
 const props = defineProps<Region>();
 
@@ -340,27 +344,29 @@ const form = useForm<Form>({
   buyer_type: "person",
   company_name: "",
   // Farmer specific
-  region: "",
-  location: "",
+  region_id: "",
+  village: "",
   cultures: "",
   bio: "",
   // Common
   terms: false,
 });
 const errorConfirmationPassword = ref<string | null>(null);
-
+const errorTermsNotConfirmed = ref<string | null>(null);
 /**
  * Handles form submission
  */
 const handleSubmit = () => {
-  if (form.password === form.password_confirmation) {
+  if (form.password != form.password_confirmation) {
+    errorConfirmationPassword.value = "Les mots de passe ne correpondent pas !";
+  } else if (form.terms != true) {
+    errorTermsNotConfirmed.value = "Vous devez valider les termes d'utilisation !";
+  } else {
     form.post(register().url, {
       onSuccess: () => {
         form.reset();
       },
     });
-  } else {
-    errorConfirmationPassword.value = "Les mots de passe ne correpondent pas !";
   }
   // Logic for submission (e.g., Inertia post) would go here
 };
