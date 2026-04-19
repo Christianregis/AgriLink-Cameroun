@@ -5,6 +5,15 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home');
+})->name('home');
+
+Route::middleware('guest')->group(function (){
+    Route::get('/login', function(){
+        return Inertia::render('Auth/Login');
+    })->name('loginForm');
+    Route::get('/register', function(){
+        return Inertia::render('Auth/Register');
+    })->name('registerForm');
 });
 
 // Routes pour l'administrateur
