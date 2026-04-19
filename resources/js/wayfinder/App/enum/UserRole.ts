@@ -6,7 +6,7 @@ export const BUYER = "buyer"
 export const FARMER = "farmer"
 
 /**
- * @see [App\enum\UserRole](C:\xampp\htdocs\agrilink_cmr\app\enum\UserRole.php)
+ * @see [App\enum\UserRole](C:\xampp\htdocs\AgriLink-Cameroun\app\enum\UserRole.php)
  */
 export const UserRole = { ADMIN, BUYER, FARMER } as const
 

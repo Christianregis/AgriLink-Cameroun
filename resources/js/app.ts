@@ -1,7 +1,6 @@
 import { createApp, h, DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
-import '../css/app.css'
-
+import '../css/app.css';
 createInertiaApp({
     resolve: (name: string) => {
         const pages = import.meta.glob<DefineComponent>('./Pages/**/*.vue')

@@ -5,7 +5,7 @@ import { applyUrlDefaults, formSafeOptions, queryParams, type RouteDefinition, t
 import localA914886 from "./local";
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 export const local = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -19,7 +19,7 @@ local.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 local.url = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -45,7 +45,7 @@ local.url = (args: { path: string | number } | [ path: string | number ] | strin
 }
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 local.get = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -54,7 +54,7 @@ local.get = (args: { path: string | number } | [ path: string | number ] | strin
 })
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 local.head = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -65,7 +65,7 @@ local.head = (args: { path: string | number } | [ path: string | number ] | stri
 
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 const localForm = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -74,7 +74,7 @@ const localForm = (args: { path: string | number } | [ path: string | number ] |
 })
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 localForm.get = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -83,7 +83,7 @@ localForm.get = (args: { path: string | number } | [ path: string | number ] | s
 })
 
 /**
- * @see \C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Filesystem\FilesystemServiceProvider.php:98
  * @route "/storage/{path}"
  */
 localForm.head = (args: { path: string | number } | [ path: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({

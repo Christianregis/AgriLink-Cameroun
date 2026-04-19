@@ -3,7 +3,7 @@
 
 
 /**
- * @see [App\enum\product\ProductStatus](C:\xampp\htdocs\agrilink_cmr\app\enum\product\ProductStatus.php)
+ * @see [App\enum\product\ProductStatus](C:\xampp\htdocs\AgriLink-Cameroun\app\enum\product\ProductStatus.php)
  */
 export const ProductStatus = {  } as const
 

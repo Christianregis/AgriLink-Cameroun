@@ -4,82 +4,82 @@
 export namespace App {
     export namespace Models {
         /**
-         * @see [\App\Models\BuyerProfile](\C:\xampp\htdocs\agrilink_cmr\app\Models\BuyerProfile.php)
+         * @see [\App\Models\BuyerProfile](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\BuyerProfile.php)
          */
         export type BuyerProfile = { id: number, user_id: string, company_name: string | null, buyer_type: App.enum.buyer.BuyerTypeEnum, total_orders: string, created_at: string | null, updated_at: string | null, user?: App.Models.User | null }
 
         /**
-         * @see [\App\Models\User](\C:\xampp\htdocs\agrilink_cmr\app\Models\User.php)
+         * @see [\App\Models\User](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\User.php)
          */
         export type User = { id: number, name: string, email: string, role: App.enum.UserRole, region_id: string | null, bio: string | null, profile_photo: string | null, email_verified_at: string | null, is_active: boolean, password: string, remember_token: string | null, deleted_at: string | null, created_at: string | null, updated_at: string | null, farmer_profile?: App.Models.FarmerProfile | null, buyer_profile?: App.Models.BuyerProfile | null, buyer_orders?: App.Models.Order[], farmer_orders?: App.Models.Order[], notifications?: Illuminate.Notifications.DatabaseNotification[], roles?: Spatie.Permission.Models.Role[], permissions?: Spatie.Permission.Models.Permission[] }
 
         /**
-         * @see [\App\Models\FarmerProfile](\C:\xampp\htdocs\agrilink_cmr\app\Models\FarmerProfile.php)
+         * @see [\App\Models\FarmerProfile](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\FarmerProfile.php)
          */
         export type FarmerProfile = { id: number, user_id: string, village: string | null, cultures: string | null, certifications: string | null, average_rating: number, total_sales: number, created_at: string | null, updated_at: string | null, user?: App.Models.User | null }
 
         /**
-         * @see [\App\Models\Order](\C:\xampp\htdocs\agrilink_cmr\app\Models\Order.php)
+         * @see [\App\Models\Order](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Order.php)
          */
         export type Order = { id: number, order_number: string, buyer_id: string, farmer_id: string, status: App.enum.order.OrderEnum, payment_method: string | null, delivery_address: string, total_amount: number, notes: string | null, created_at: string | null, updated_at: string | null, farmer?: App.Models.User | null, buyer?: App.Models.User | null, order_items?: App.Models.OrderItem[], order_status_logs?: App.Models.OrderStatusLogs[] }
 
         /**
-         * @see [\App\Models\OrderItem](\C:\xampp\htdocs\agrilink_cmr\app\Models\OrderItem.php)
+         * @see [\App\Models\OrderItem](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\OrderItem.php)
          */
         export type OrderItem = { id: number, order_id: string, product_id: string, quantity: string, unit_price: number, subtotal: number, created_at: string | null, updated_at: string | null, order?: App.Models.Order | null, product?: App.Models.Product | null }
 
         /**
-         * @see [\App\Models\Product](\C:\xampp\htdocs\agrilink_cmr\app\Models\Product.php)
+         * @see [\App\Models\Product](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Product.php)
          */
         export type Product = { id: number, user_id: string, category_id: string, region_id: string, title: string, slug: string, description: string | null, quantity: string, unit: string, price: number, min_order_qty: string, price_negotiable: boolean, harvest_date: string | null, expires_at: string | null, status: App.enum.product.ProductStatus, views_count: string, deleted_at: string | null, created_at: string | null, updated_at: string | null, product_images?: App.Models.ProductImage[], user?: App.Models.User | null, category?: App.Models.Category | null, region?: App.Models.Region | null, order_items?: App.Models.OrderItem[] }
 
         /**
-         * @see [\App\Models\ProductImage](\C:\xampp\htdocs\agrilink_cmr\app\Models\ProductImage.php)
+         * @see [\App\Models\ProductImage](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\ProductImage.php)
          */
         export type ProductImage = { id: number, product_id: string, path: string, is_primary: boolean, order: string, created_at: string | null, updated_at: string | null, product?: App.Models.Product | null }
 
         /**
-         * @see [\App\Models\Category](\C:\xampp\htdocs\agrilink_cmr\app\Models\Category.php)
+         * @see [\App\Models\Category](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Category.php)
          */
         export type Category = { id: number, name: string, slug: string, icon: string | null, description: string | null, is_active: boolean, created_at: string | null, updated_at: string | null }
 
         /**
-         * @see [\App\Models\Region](\C:\xampp\htdocs\agrilink_cmr\app\Models\Region.php)
+         * @see [\App\Models\Region](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Region.php)
          */
         export type Region = { id: number, name: string, code: string, country: string, created_at: string | null, updated_at: string | null }
 
         /**
-         * @see [\App\Models\OrderStatusLogs](\C:\xampp\htdocs\agrilink_cmr\app\Models\OrderStatusLogs.php)
+         * @see [\App\Models\OrderStatusLogs](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\OrderStatusLogs.php)
          */
         export type OrderStatusLogs = { id: number, order_id: string, user_id: string, old_status: string, new_status: string, comment: string | null, created_at: string | null, updated_at: string | null }
 
         /**
-         * @see [\App\Models\Conversation](\C:\xampp\htdocs\agrilink_cmr\app\Models\Conversation.php)
+         * @see [\App\Models\Conversation](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Conversation.php)
          */
         export type Conversation = { id: number, farmer_id: string, buyer_id: string, product_id: string | null, last_message_at: string | null, is_archived: boolean, created_at: string | null, updated_at: string | null, farmer?: App.Models.User | null, buyer?: App.Models.User | null, product?: App.Models.Product | null, messages?: App.Models.Message[] }
 
         /**
-         * @see [\App\Models\Message](\C:\xampp\htdocs\agrilink_cmr\app\Models\Message.php)
+         * @see [\App\Models\Message](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Message.php)
          */
         export type Message = { id: number, conversation_id: string, sender_id: string, body: string, attachment_path: string | null, read_at: string | null, created_at: string | null, updated_at: string | null }
 
         /**
-         * @see [\App\Models\Favorite](\C:\xampp\htdocs\agrilink_cmr\app\Models\Favorite.php)
+         * @see [\App\Models\Favorite](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Favorite.php)
          */
         export type Favorite = { id: number, user_id: string, product_id: string, created_at: string | null, updated_at: string | null, user?: App.Models.User | null, product?: App.Models.Product | null }
 
         /**
-         * @see [\App\Models\Notification](\C:\xampp\htdocs\agrilink_cmr\app\Models\Notification.php)
+         * @see [\App\Models\Notification](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Notification.php)
          */
         export type Notification = { id: number, type: string, notifiable_type: string, notifiable_id: string, data: string, read_at: string | null, created_at: string | null, updated_at: string | null }
 
         /**
-         * @see [\App\Models\Report](\C:\xampp\htdocs\agrilink_cmr\app\Models\Report.php)
+         * @see [\App\Models\Report](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Report.php)
          */
         export type Report = { id: number, reporter_id: string, reportable_type: string, reportable_id: string, reason: string, status: App.enum.report.ReportEnum, created_at: string | null, updated_at: string | null }
 
         /**
-         * @see [\App\Models\Review](\C:\xampp\htdocs\agrilink_cmr\app\Models\Review.php)
+         * @see [\App\Models\Review](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\Review.php)
          */
         export type Review = { id: number, order_id: string, reviewer_id: string, reviewed_id: string, rating: string, comment: string | null, farmer_reply: string | null, created_at: string | null, updated_at: string | null, order?: App.Models.Order | null, reviewer?: App.Models.User | null, reviewed?: App.Models.User | null }
     }
@@ -87,34 +87,34 @@ export namespace App {
     export namespace enum {
         export namespace buyer {
             /**
-             * @see [\App\enum\buyer\BuyerTypeEnum](\C:\xampp\htdocs\agrilink_cmr\app\enum\buyer\BuyerTypeEnum.php)
+             * @see [\App\enum\buyer\BuyerTypeEnum](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\buyer\BuyerTypeEnum.php)
              */
-            export type BuyerTypeEnum = 
+            export type BuyerTypeEnum = 'person' | 'company'
         }
 
         export namespace order {
             /**
-             * @see [\App\enum\order\OrderEnum](\C:\xampp\htdocs\agrilink_cmr\app\enum\order\OrderEnum.php)
+             * @see [\App\enum\order\OrderEnum](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\order\OrderEnum.php)
              */
             export type OrderEnum = 
         }
 
         export namespace product {
             /**
-             * @see [\App\enum\product\ProductStatus](\C:\xampp\htdocs\agrilink_cmr\app\enum\product\ProductStatus.php)
+             * @see [\App\enum\product\ProductStatus](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\product\ProductStatus.php)
              */
             export type ProductStatus = 
         }
 
         export namespace report {
             /**
-             * @see [\App\enum\report\ReportEnum](\C:\xampp\htdocs\agrilink_cmr\app\enum\report\ReportEnum.php)
+             * @see [\App\enum\report\ReportEnum](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\report\ReportEnum.php)
              */
             export type ReportEnum = 
         }
 
         /**
-         * @see [\App\enum\UserRole](\C:\xampp\htdocs\agrilink_cmr\app\enum\UserRole.php)
+         * @see [\App\enum\UserRole](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\UserRole.php)
          */
         export type UserRole = 'admin' | 'buyer' | 'farmer'
     }
@@ -123,7 +123,7 @@ export namespace App {
 export namespace Illuminate {
     export namespace Notifications {
         /**
-         * @see [\Illuminate\Notifications\DatabaseNotification](\C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Notifications\DatabaseNotification.php)
+         * @see [\Illuminate\Notifications\DatabaseNotification](\C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Notifications\DatabaseNotification.php)
          */
         export type DatabaseNotification = { incrementing: boolean, id: string, type: string, notifiable_type: string, notifiable_id: string, data: Record<string, unknown>, read_at: string | null, created_at: string | null, updated_at: string | null, notifiable?: Illuminate.Notifications.DatabaseNotification | null }
     }
@@ -133,12 +133,12 @@ export namespace Spatie {
     export namespace Permission {
         export namespace Models {
             /**
-             * @see [\Spatie\Permission\Models\Role](\C:\xampp\htdocs\agrilink_cmr\vendor\spatie\laravel-permission\src\Models\Role.php)
+             * @see [\Spatie\Permission\Models\Role](\C:\xampp\htdocs\AgriLink-Cameroun\vendor\spatie\laravel-permission\src\Models\Role.php)
              */
             export type Role = { id: number, name: string, guard_name: string, created_at: string | null, updated_at: string | null, permissions?: Spatie.Permission.Models.Permission[] }
 
             /**
-             * @see [\Spatie\Permission\Models\Permission](\C:\xampp\htdocs\agrilink_cmr\vendor\spatie\laravel-permission\src\Models\Permission.php)
+             * @see [\Spatie\Permission\Models\Permission](\C:\xampp\htdocs\AgriLink-Cameroun\vendor\spatie\laravel-permission\src\Models\Permission.php)
              */
             export type Permission = { id: number, name: string, guard_name: string, created_at: string | null, updated_at: string | null, roles?: Spatie.Permission.Models.Role[], permissions?: Spatie.Permission.Models.Permission[] }
         }
@@ -152,7 +152,7 @@ export namespace Inertia {
 export namespace Closure {
     export namespace __invoke {
         /**
-         * @see [\Closure::__invoke](\C:\xampp\htdocs\agrilink_cmr\vendor\laravel\framework\src\Illuminate\Foundation\Configuration\ApplicationBuilder.php)
+         * @see [\Closure::__invoke](\C:\xampp\htdocs\AgriLink-Cameroun\vendor\laravel\framework\src\Illuminate\Foundation\Configuration\ApplicationBuilder.php)
          */
         export type Request = Record<string, unknown>
     }
