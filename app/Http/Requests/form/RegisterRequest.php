@@ -33,6 +33,7 @@ class RegisterRequest extends FormRequest
             'cultures' => ['string', 'nullable'],
             'profile_photo' => ['file', 'mimes:png,jpg,jpeg', 'max:2048', 'nullable'],
             'company_name' => ['string', 'max:255', 'nullable'],
+            'certifications' => ['string', 'url', 'nullable'],
             'buyer_type' => ['string', 'in:person,company', 'nullable']
         ];
     }

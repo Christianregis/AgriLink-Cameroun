@@ -2,7 +2,8 @@
 
 namespace App\enum\buyer;
 
-enum BuyerTypeEnum
+enum BuyerTypeEnum: string
 {
-    //
+    case PERSON = 'person';
+    case COMPANY = 'company';
 }
