@@ -4,7 +4,7 @@
 import { formSafeOptions, queryParams, type RouteDefinition, type RouteFormDefinition, type RouteQueryOptions } from "./../index";
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 export const home = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -18,7 +18,7 @@ home.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 home.url = (options?: RouteQueryOptions) => {
@@ -26,7 +26,7 @@ home.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 home.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
@@ -35,7 +35,7 @@ home.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
@@ -46,7 +46,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
 
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -55,7 +55,7 @@ const homeForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -64,7 +64,7 @@ homeForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:6
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:9
  * @route "/"
  */
 homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
@@ -76,154 +76,274 @@ homeForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
 
 home.form = homeForm
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
  * @route "/login"
  */
-export const loginForm = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: loginForm.url(options),
+export const connexion = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: connexion.url(options),
     method: "get",
 })
 
-loginForm.definition = {
+connexion.definition = {
     methods: ["get","head"],
     url: "/login",
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
  * @route "/login"
  */
-loginForm.url = (options?: RouteQueryOptions) => {
-    return loginForm.definition.url + queryParams(options)
+connexion.url = (options?: RouteQueryOptions) => {
+    return connexion.definition.url + queryParams(options)
 }
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
  * @route "/login"
  */
-loginForm.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: loginForm.url(options),
+connexion.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: connexion.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
  * @route "/login"
  */
-loginForm.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
-    url: loginForm.url(options),
+connexion.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: connexion.url(options),
     method: "head",
 })
 
 
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
  * @route "/login"
  */
-const loginFormForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: loginForm.url(options),
+const connexionForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: connexion.url(options),
     method: "get",
 })
 
-/**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
- * @route "/login"
- */
-loginFormForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: loginForm.url(options),
-    method: "get",
-})
-
-/**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:11
- * @route "/login"
- */
-loginFormForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: loginForm.url(formSafeOptions("head", options)),
-    method: "get",
-})
-
-
-
-loginForm.form = loginFormForm
 /**
  * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
- * @route "/register"
+ * @route "/login"
  */
-export const registerForm = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: registerForm.url(options),
+connexionForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: connexion.url(options),
     method: "get",
 })
 
-registerForm.definition = {
+/**
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @route "/login"
+ */
+connexionForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: connexion.url(formSafeOptions("head", options)),
+    method: "get",
+})
+
+
+
+connexion.form = connexionForm
+/**
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
+ * @route "/register"
+ */
+export const inscription = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: inscription.url(options),
+    method: "get",
+})
+
+inscription.definition = {
     methods: ["get","head"],
     url: "/register",
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
  * @route "/register"
  */
-registerForm.url = (options?: RouteQueryOptions) => {
-    return registerForm.definition.url + queryParams(options)
+inscription.url = (options?: RouteQueryOptions) => {
+    return inscription.definition.url + queryParams(options)
 }
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
  * @route "/register"
  */
-registerForm.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
-    url: registerForm.url(options),
+inscription.get = (options?: RouteQueryOptions): RouteDefinition<"get"> => ({
+    url: inscription.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
  * @route "/register"
  */
-registerForm.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
-    url: registerForm.url(options),
+inscription.head = (options?: RouteQueryOptions): RouteDefinition<"head"> => ({
+    url: inscription.url(options),
     method: "head",
 })
 
 
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
  * @route "/register"
  */
-const registerFormForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: registerForm.url(options),
+const inscriptionForm = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: inscription.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
  * @route "/register"
  */
-registerFormForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: registerForm.url(options),
+inscriptionForm.get = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: inscription.url(options),
     method: "get",
 })
 
 /**
- * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:14
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\routes\web.php:17
  * @route "/register"
  */
-registerFormForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
-    action: registerForm.url(formSafeOptions("head", options)),
+inscriptionForm.head = (options?: RouteQueryOptions): RouteFormDefinition<"get"> => ({
+    action: inscription.url(formSafeOptions("head", options)),
     method: "get",
 })
 
 
 
-registerForm.form = registerFormForm
+inscription.form = inscriptionForm
+/**
+ * @see \App\Http\Controllers\AuthController::login
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:54
+ * @route "/login"
+ */
+export const login = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
+    url: login.url(options),
+    method: "post",
+})
+
+login.definition = {
+    methods: ["post"],
+    url: "/login",
+} satisfies RouteDefinition<["post"]>
+
+/**
+ * @see \App\Http\Controllers\AuthController::login
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:54
+ * @route "/login"
+ */
+login.url = (options?: RouteQueryOptions) => {
+    return login.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\AuthController::login
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:54
+ * @route "/login"
+ */
+login.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
+    url: login.url(options),
+    method: "post",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\AuthController::login
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:54
+ * @route "/login"
+ */
+const loginForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
+    action: login.url(options),
+    method: "post",
+})
+
+/**
+ * @see \App\Http\Controllers\AuthController::login
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:54
+ * @route "/login"
+ */
+loginForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
+    action: login.url(options),
+    method: "post",
+})
+
+
+
+login.form = loginForm
+/**
+ * @see \App\Http\Controllers\AuthController::register
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:17
+ * @route "/register"
+ */
+export const register = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
+    url: register.url(options),
+    method: "post",
+})
+
+register.definition = {
+    methods: ["post"],
+    url: "/register",
+} satisfies RouteDefinition<["post"]>
+
+/**
+ * @see \App\Http\Controllers\AuthController::register
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:17
+ * @route "/register"
+ */
+register.url = (options?: RouteQueryOptions) => {
+    return register.definition.url + queryParams(options)
+}
+
+/**
+ * @see \App\Http\Controllers\AuthController::register
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:17
+ * @route "/register"
+ */
+register.post = (options?: RouteQueryOptions): RouteDefinition<"post"> => ({
+    url: register.url(options),
+    method: "post",
+})
+
+
+
+/**
+ * @see \App\Http\Controllers\AuthController::register
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:17
+ * @route "/register"
+ */
+const registerForm = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
+    action: register.url(options),
+    method: "post",
+})
+
+/**
+ * @see \App\Http\Controllers\AuthController::register
+ * @see \C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php:17
+ * @route "/register"
+ */
+registerForm.post = (options?: RouteQueryOptions): RouteFormDefinition<"post"> => ({
+    action: register.url(options),
+    method: "post",
+})
+
+
+
+register.form = registerForm
 
 const routes = {
     home,
-    loginForm,
-    registerForm,
+    connexion,
+    inscription,
+    login,
+    register,
 }
 
 export default routes

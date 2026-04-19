@@ -36,12 +36,12 @@
         <!-- Auth Buttons -->
         <div class="items-center hidden space-x-4 md:flex">
           <Link
-            :href="loginForm()"
+            :href="connexion()"
             class="px-4 py-2 font-medium text-neutral-body hover:text-brand-primary"
             >Connexion</
           Link>
           <Link
-            :href="registerForm()"
+            :href="inscription()"
             class="bg-brand-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-brand-hover transition-all shadow-sm hover:shadow-md"
             >Rejoindre</
           Link>
@@ -59,7 +59,7 @@
 </template>
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3';
-import { loginForm } from '../wayfinder/routes';
-import { registerForm } from '../wayfinder/routes';
+import { connexion } from '../wayfinder/routes';
+import { inscription } from '../wayfinder/routes';
 import { home } from '../wayfinder/routes';
 </script>

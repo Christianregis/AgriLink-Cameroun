@@ -11,7 +11,7 @@ export namespace App {
         /**
          * @see [\App\Models\User](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\User.php)
          */
-        export type User = { id: number, name: string, email: string, role: App.enum.UserRole, region_id: string | null, bio: string | null, profile_photo: string | null, email_verified_at: string | null, is_active: boolean, password: string, remember_token: string | null, deleted_at: string | null, created_at: string | null, updated_at: string | null, farmer_profile?: App.Models.FarmerProfile | null, buyer_profile?: App.Models.BuyerProfile | null, buyer_orders?: App.Models.Order[], farmer_orders?: App.Models.Order[], notifications?: Illuminate.Notifications.DatabaseNotification[], roles?: Spatie.Permission.Models.Role[], permissions?: Spatie.Permission.Models.Permission[] }
+        export type User = { id: number, name: string, email: string, phone: string, role: App.enum.UserRole, region_id: string | null, bio: string | null, profile_photo: string | null, email_verified_at: string | null, is_active: boolean, password: string, remember_token: string | null, deleted_at: string | null, created_at: string | null, updated_at: string | null, farmer_profile?: App.Models.FarmerProfile | null, buyer_profile?: App.Models.BuyerProfile | null, buyer_orders?: App.Models.Order[], farmer_orders?: App.Models.Order[], notifications?: Illuminate.Notifications.DatabaseNotification[], roles?: Spatie.Permission.Models.Role[], permissions?: Spatie.Permission.Models.Permission[] }
 
         /**
          * @see [\App\Models\FarmerProfile](\C:\xampp\htdocs\AgriLink-Cameroun\app\Models\FarmerProfile.php)
@@ -89,7 +89,7 @@ export namespace App {
             /**
              * @see [\App\enum\buyer\BuyerTypeEnum](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\buyer\BuyerTypeEnum.php)
              */
-            export type BuyerTypeEnum = 'person' | 'company'
+            export type BuyerTypeEnum = 'person' | 'company' | 'institution' | 'other'
         }
 
         export namespace order {
@@ -117,6 +117,32 @@ export namespace App {
          * @see [\App\enum\UserRole](\C:\xampp\htdocs\AgriLink-Cameroun\app\enum\UserRole.php)
          */
         export type UserRole = 'admin' | 'buyer' | 'farmer'
+    }
+
+    export namespace Http {
+        export namespace Controllers {
+            export namespace AuthController {
+                export namespace Login {
+                    /**
+                     * @see [\App\Http\Controllers\AuthController::login](\C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php)
+                     */
+                    export type Response = Inertia.Pages.Dashboard.Index
+
+                    /**
+                     * @see [\App\Http\Controllers\AuthController::login](\C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php)
+                     */
+                    export type Request = {    email: string;
+                        password: string;}
+                }
+
+                export namespace Register {
+                    /**
+                     * @see [\App\Http\Controllers\AuthController::register](\C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php)
+                     */
+                    export type Request = Record<string, unknown>
+                }
+            }
+        }
     }
 }
 
@@ -146,7 +172,16 @@ export namespace Spatie {
 }
 
 export namespace Inertia {
-    export type SharedData = []
+    export type SharedData = {flash: {success: unknown, error: unknown } }
+
+    export namespace Pages {
+        export namespace Dashboard {
+            /**
+             * @see [\App\Http\Controllers\AuthController::login](\C:\xampp\htdocs\AgriLink-Cameroun\app\Http\Controllers\AuthController.php)
+             */
+            export type Index = Inertia.SharedData
+        }
+    }
 }
 
 export namespace Closure {

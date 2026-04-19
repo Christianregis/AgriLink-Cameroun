@@ -3,6 +3,6 @@
 
 declare module '@inertiajs/core' {
     export interface InertiaConfig {
-     sharedPageProps: Record<string, never> 
+     sharedPageProps: { flash: {success: unknown, error: unknown } } 
     }
 }

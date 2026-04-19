@@ -3,10 +3,12 @@
 
 export const PERSON = "person"
 export const COMPANY = "company"
+export const INSTITUTION = "institution"
+export const OTHER = "other"
 
 /**
  * @see [App\enum\buyer\BuyerTypeEnum](C:\xampp\htdocs\AgriLink-Cameroun\app\enum\buyer\BuyerTypeEnum.php)
  */
-export const BuyerTypeEnum = { PERSON, COMPANY } as const
+export const BuyerTypeEnum = { PERSON, COMPANY, INSTITUTION, OTHER } as const
 
 export default BuyerTypeEnum

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone')->unique();
             $table->string('role'); // Remplacé de enum
             $table->foreignId('region_id')->nullable()->constrained('regions')->onDelete('set null');
             $table->text('bio')->nullable();

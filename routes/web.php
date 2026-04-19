@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Resources\region\RegionResource;
+use App\Models\Region;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -7,26 +10,31 @@ Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::middleware('guest')->group(function (){
-    Route::get('/login', function(){
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function () {
         return Inertia::render('Auth/Login');
-    })->name('loginForm');
-    Route::get('/register', function(){
-        return Inertia::render('Auth/Register');
-    })->name('registerForm');
+    })->name('connexion');
+    Route::get('/register', function () {
+        return Inertia::render('Auth/Register', [
+            'regions' => RegionResource::collection(Region::all()),
+        ]);
+    })->name('inscription');
+
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
 
 // Routes pour l'administrateur
-Route::middleware(['role:admin'])->group(function (){
+Route::middleware(['role:admin'])->group(function () {
     // Routes pour l'adminstrateur ici
 });
 
 // Routes pour l'agriculteur
-Route::middleware(['role:farmer'])->group(function (){
+Route::middleware(['role:farmer'])->group(function () {
     // Routes ici
 });
 
 // Route pour l'acheteur
-Route::middleware(['role:buyer'])->group(function(){
+Route::middleware(['role:buyer'])->group(function () {
     // Routes ici
 });

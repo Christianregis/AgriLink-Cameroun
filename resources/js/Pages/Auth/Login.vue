@@ -92,7 +92,7 @@
         <p class="text-sm text-neutral-body">
           Nouveau sur AgriLink ?
           <Link
-            :href="registerForm()"
+            :href="inscription()"
             class="font-bold text-brand-primary hover:underline"
             >Créer un compte</Link
           >
@@ -107,6 +107,6 @@
 </template>
 <script setup lang="ts">
 import { Link } from "@inertiajs/vue3";
-import { registerForm } from "../../wayfinder/routes";
+import { inscription } from "../../wayfinder/routes";
 import { home } from "../../wayfinder/routes";
 </script>
