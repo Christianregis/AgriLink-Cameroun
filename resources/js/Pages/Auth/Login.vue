@@ -20,7 +20,7 @@
         <h1 class="mb-2 text-2xl font-bold text-neutral-title">Bon retour !</h1>
         <p class="mb-8 text-neutral-muted">Accédez à votre espace AgriLink</p>
 
-        <form class="space-y-6">
+        <form @submit.prevent="handleLogin()" class="space-y-6">
           <div>
             <label class="block mb-2 text-sm font-semibold text-neutral-title"
               >Adresse Email</label
@@ -32,7 +32,9 @@
                 <i class="far fa-envelope"></i>
               </span>
               <input
+              required
                 type="email"
+                v-model="form.email"
                 placeholder="votre@email.com"
                 class="w-full py-3 pl-10 pr-4 transition-all border bg-neutral-bg border-neutral-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary text-neutral-body"
               />
@@ -55,7 +57,9 @@
                 <i class="fas fa-lock"></i>
               </span>
               <input
+              required
                 type="password"
+                v-model="form.password"
                 placeholder="••••••••"
                 class="w-full py-3 pl-10 pr-10 transition-all border bg-neutral-bg border-neutral-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary text-neutral-body"
               />
@@ -106,7 +110,21 @@
   </main>
 </template>
 <script setup lang="ts">
-import { Link } from "@inertiajs/vue3";
+import { Link, useForm } from "@inertiajs/vue3";
 import { inscription } from "../../wayfinder/routes";
 import { home } from "../../wayfinder/routes";
+
+interface Form{
+    email: string,
+    password: string,
+}
+
+const form = useForm<Form>({
+    email: '',
+    password: ''
+});
+
+const handleLogin = ()=>{
+    form
+}
 </script>

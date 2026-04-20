@@ -1,5 +1,6 @@
 <template>
   <main class="min-h-screen px-4 py-12 antialiased bg-neutral-bg">
+  <FlashMessage />
     <div class="max-w-2xl mx-auto">
       <div class="mb-10 text-center">
         <Link :href="home()" class="inline-flex items-center mb-6 space-x-2">
@@ -296,6 +297,7 @@ import { ref } from "vue";
 import { Link, useForm } from "@inertiajs/vue3";
 import { connexion, home } from "../../wayfinder/routes";
 import { register } from "../../wayfinder/routes";
+import FlashMessage from "../../Components/FlashMessage.vue";
 
 interface Form {
   account_type: "buyer" | "farmer";

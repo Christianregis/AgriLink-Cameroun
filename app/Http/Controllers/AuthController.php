@@ -57,7 +57,6 @@ class AuthController extends Controller
 
         if (!Auth::attempt($credentials)) {
             return back()->withErrors(
-                'email',
                 'Identifiants incorrects'
             );
         }
@@ -79,5 +78,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         // Redirection vers le login
+        return redirect()->route('connexion')->with('success', 'Deconnection reussi !');
     }
 }
