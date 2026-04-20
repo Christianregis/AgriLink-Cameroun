@@ -6,23 +6,29 @@ use App\Models\Region;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Route publiques
 Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::middleware('guest')->group(function () {
-    Route::get('/login', function () {
-        return Inertia::render('Auth/Login');
-    })->name('connexion');
-    Route::get('/register', function () {
-        return Inertia::render('Auth/Register', [
-            'regions' => RegionResource::collection(Region::all()),
-        ]);
-    })->name('inscription');
+Route::middleware('guest')->group(function () {});
 
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/register', [AuthController::class, 'register'])->name('register');
-});
+Route::get('/login', function () {
+    return Inertia::render('Auth/Login');
+})->name('connexion');
+
+Route::get('/register', function () {
+    return Inertia::render('Auth/Register', [
+        'regions' => RegionResource::collection(Region::all()),
+    ]);
+})->name('inscription');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/forgot-password', function () {
+    return Inertia::render('Auth/ForgotPassword');
+})->name('showForgotpPassword');
 
 // Routes pour l'administrateur
 Route::middleware(['role:admin'])->group(function () {

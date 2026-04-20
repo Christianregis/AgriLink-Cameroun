@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+
 class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
@@ -55,19 +56,17 @@ class AuthController extends Controller
     {
         $credentials = $request->validated();
 
-        if (!Auth::attempt($credentials)) {
-            return back()->withErrors(
-                'Identifiants incorrects'
-            );
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if (!$user->is_active) {
+                return back()->with('error', 'Compte desactive: Veuillez l\'activer en consultant vos mails');
+            }
+            return Inertia::render('Dashboard/Index', []);
         }
-
-        $request->session()->regenerate();
-        $user = Auth::user();
-        if (!$user->is_active) {
-            return back()->withErrors('email', 'Compte desactive !');
-        }
-
-        return Inertia::render('Dashboard/Index', []);
+        return back()->with(
+            'error',
+            'Identifiants incorrects'
+        );
     }
 
     public function logout(Request $request)

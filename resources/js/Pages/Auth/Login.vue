@@ -2,6 +2,7 @@
   <main
     class="flex flex-col items-center justify-center min-h-screen p-4 antialiased bg-neutral-bg"
   >
+    <FlashMessage />
     <!-- Logo -->
     <Link :href="home()" class="flex items-center mb-8 space-x-2">
       <div class="p-2 rounded-lg bg-brand-primary">
@@ -32,12 +33,15 @@
                 <i class="far fa-envelope"></i>
               </span>
               <input
-              required
+                required
                 type="email"
                 v-model="form.email"
                 placeholder="votre@email.com"
                 class="w-full py-3 pl-10 pr-4 transition-all border bg-neutral-bg border-neutral-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary text-neutral-body"
               />
+              <p v-if="form.errors.email" class="mt-1 text-sm text-red-500">
+                {{ form.errors.email }}
+              </p>
             </div>
           </div>
 
@@ -45,7 +49,7 @@
             <div class="flex justify-between mb-2">
               <label class="text-sm font-semibold text-neutral-title">Mot de passe</label>
               <Link
-                href="#"
+                href=""
                 class="text-sm font-medium text-brand-primary hover:underline"
                 >Oublié ?</Link
               >
@@ -57,12 +61,14 @@
                 <i class="fas fa-lock"></i>
               </span>
               <input
-              required
                 type="password"
                 v-model="form.password"
                 placeholder="••••••••"
                 class="w-full py-3 pl-10 pr-10 transition-all border bg-neutral-bg border-neutral-border rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary text-neutral-body"
               />
+              <p v-if="form.errors.password" class="mt-1 text-sm text-red-500">
+                {{ form.errors.password }}
+              </p>
               <button
                 type="button"
                 class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-brand-primary"
@@ -95,9 +101,7 @@
       <div class="p-6 text-center border-t border-gray-100 bg-brand-bg/50">
         <p class="text-sm text-neutral-body">
           Nouveau sur AgriLink ?
-          <Link
-            :href="inscription()"
-            class="font-bold text-brand-primary hover:underline"
+          <Link :href="inscription()" class="font-bold text-brand-primary hover:underline"
             >Créer un compte</Link
           >
         </p>
@@ -113,18 +117,23 @@
 import { Link, useForm } from "@inertiajs/vue3";
 import { inscription } from "../../wayfinder/routes";
 import { home } from "../../wayfinder/routes";
+import FlashMessage from "../../Components/FlashMessage.vue";
 
-interface Form{
-    email: string,
-    password: string,
+interface Form {
+  email: string;
+  password: string;
 }
 
 const form = useForm<Form>({
-    email: '',
-    password: ''
+  email: "",
+  password: "",
 });
 
-const handleLogin = ()=>{
-    form
-}
+const handleLogin = () => {
+  form.post("/login", {
+    onSuccess: () => {
+      form.reset();
+    },
+  });
+};
 </script>
